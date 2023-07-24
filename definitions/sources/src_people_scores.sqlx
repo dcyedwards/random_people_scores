@@ -1,0 +1,8 @@
+config {
+  type: "declaration",
+  database: "project2023-392611",
+  schema: "random_people",
+  name: "people_scores",
+  description: "Generated data of fictional random people for me to play with"
+}
+

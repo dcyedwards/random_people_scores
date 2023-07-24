@@ -1,0 +1,14 @@
+config {
+  type: "table",
+  schema: "staging",
+  description: "About to do some aggregration stuff",
+  bigquery: {
+    partitionBy: "timestamp"
+  }
+  // column level documentation, defined in includes/docs.js
+  // columns: docs.nyc_weather
+}
+select country, sum(cast(score as int)) as sum_country_score
+from ${ref("people_scores")}
+group by country
+order by sum_country_score desc
