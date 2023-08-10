@@ -13,10 +13,15 @@ config {
   
 }
 
-SELECT * FROM ${ref("people_scores")}
+-- SELECT * FROM ${ref("people_scores")}
+-- ${ when(incremental(), `WHERE DATE(timestamp) > (SELECT MAX(DATE(timestamp)) FROM ${self()})`) }
+
+
+select `country`, sum(cast(`score` AS int64)) as score_sum, date(`timestamp`) as score_date
+from ${ref("people_scores")}
 ${ when(incremental(), `WHERE DATE(timestamp) > (SELECT MAX(DATE(timestamp)) FROM ${self()})`) }
-
-
+group by `country`, score_date
+order by score_sum desc
 
 
 
