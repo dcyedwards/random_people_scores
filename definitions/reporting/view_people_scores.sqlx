@@ -1,0 +1,12 @@
+config {
+  type: "view",
+  schema: "reporting",
+  uniqueKey: ['timestamp'],
+  description: "About to do some aggregration stuff",
+  assertions: {
+    nonNull: ["country"]
+  }
+  
+}
+select * from ${ref("stg_people_scores_incremental")}
+order by `timestamp` desc

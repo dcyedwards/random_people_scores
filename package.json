@@ -1,6 +1,0 @@
-{
-  "name": "dataform-ga4events",
-  "dependencies": {
-    "@dataform/core": "2.4.2"
-  }
-}

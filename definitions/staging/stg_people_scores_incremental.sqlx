@@ -1,0 +1,26 @@
+
+config {
+  type: "incremental",
+  schema: "staging",
+  uniqueKey: ['timestamp'],
+  description: "About to do some aggregration stuff",
+  assertions: {
+    nonNull: ["country"]
+  },
+   bigquery: {
+    partitionBy: "DATE(timestamp)"
+  }
+  
+}
+
+SELECT * FROM ${ref("people_scores")}
+${ when(incremental(), `WHERE DATE(timestamp) > (SELECT MAX(DATE(timestamp)) FROM ${self()})`) }
+
+
+
+
+
+
+
+
+

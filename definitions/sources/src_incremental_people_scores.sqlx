@@ -1,6 +1,0 @@
-config { type: "incremental" }
-
-SELECT *
-FROM ${ref("people_scores")}
-
-${ when(incremental(), `WHERE timestamp > (SELECT MAX(timestamp) FROM ${self()})`) }

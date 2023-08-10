@@ -3,6 +3,9 @@
   "assertionSchema": "dataform_assertions",
   "warehouse": "bigquery",
   "defaultDatabase": "project2023-392611",
-  "defaultLocation": "EU"
+  "defaultLocation": "EU",
+  "vars" : {
+    "stg_incr_table": "stg_people_scores_incremental"
+    }
 }
     
